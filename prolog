@@ -40,14 +40,49 @@ parent(amitabh,sweta).
 parent(jaya,abhishek).
 parent(jaya,sweta).
 parent(abhishek,aradhya).
-parent(aishwarya,aradhys).
+parent(aishwarya,aradhya).
 %conditions
-mother(M,C):-female(M),parent(M,c).
+mother(M,C):-female(M),parent(M,C).
 son(S,P):-male(S),parent(P,S).
 daughter(D,P):-female(D),parent(P,D).
 father(F,C):-male(F),parent(F,C).
-grandfather(GF,C):-male(GF),parent(GF,M),parent(M,c).
+grandfather(GF,C):-male(GF),parent(GF,M),parent(M,C).
 grandmother(GM,C):-female(GM),parent(GM,M),parent(M,C).
 sister(S,B):-female(S),parent(P,S),parent(P,B).
 brother(B,S):-male(B),parent(M,B),parent(M,S).
 
+/*            output
+?-daughter(X,Y):
+X = sweta,
+Y = amitabh
+X = sweta,
+Y = jaya
+X = aradhya,
+Y = abhishek
+X = aradhya,
+Y = aishwarya
+
+?-grandmother(X,Y):
+X = teji,
+Y = abhishek
+X = teji,
+Y = sweta
+X = jaya,
+Y = aradhya
+
+
+
+?-statistics:
+Started at Tue Nov 14 10:30:02 2023
+92485.041 seconds cpu time for 9,465 inferences
+1,689,770 atoms, 46,669 functors, 28,522 predicates, 1,801 modules, 33,098,157 VM-codes
+
+                    Limit   Allocated      In use
+Local  stack:           -       20 Kb    3,592  b
+Global stack:           -       64 Kb   18,304  b
+Trail  stack:           -       34 Kb    1,592  b
+       Total:      238 Mb      118 Kb       23 Kb
+
+30,902 atom garbage collections gained 404,135,410 atoms in 12914.310 seconds.
+6,444 clause garbage collections gained 48,329,335 clauses in 86.273 seconds.
+75 threads, 1,322,870 finished threads used 76909.456 seconds
